@@ -1,4 +1,6 @@
-export { renderToSVG, renderToSVGString } from './render';
-export type { Input, RenderOptions, SvgoConfig } from './types';
-export { initGlobalEnv, cleanupGlobalEnv, createSSREnvironment } from './env';
-export { optimizeSVG } from './optimize';
+export { renderToSVG, renderToSVGString, renderWithResult } from './render.js';
+export type { Input, RenderOptions, SSRError, SSRRenderResult, SvgoConfig } from './types.js';
+export { initGlobalEnv, cleanupGlobalEnv, createSSREnvironment, isSSR } from './env.js';
+export type { SSREnvironment } from './env.js';
+export { optimizeSVG } from './optimize.js';
+export { defaultResourceLoader, setupDefaultResourceLoader } from './resource-loader.js';

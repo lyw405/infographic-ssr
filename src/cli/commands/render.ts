@@ -1,7 +1,7 @@
 import { Command } from 'commander';
-import { renderToSVGString } from '../../render';
-import type { RenderOptions } from '../../types';
-import { loadSvgoConfig, parseInputContent, readInput, writeOutput } from '../utils';
+import { renderToSVGString } from '../../render.js';
+import type { RenderOptions } from '../../types.js';
+import { loadSvgoConfig, parseInputContent, readInput, writeOutput } from '../utils.js';
 
 interface RenderCommandOptions {
   input: string;
@@ -34,11 +34,11 @@ export const renderCommand = new Command('render')
       }
 
       if (opts.structure) {
-        (renderOptions as any).structure = opts.structure;
+        renderOptions.structure = opts.structure;
       }
 
       if (opts.theme) {
-        (renderOptions as any).theme = opts.theme;
+        renderOptions.theme = opts.theme;
       }
 
       let input: any;

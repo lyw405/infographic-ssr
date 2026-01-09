@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import { renderCommand } from './commands/render';
+import { renderCommand } from './commands/render.js';
 
 program
   .name('infographic-ssr')

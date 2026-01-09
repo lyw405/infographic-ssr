@@ -17,25 +17,43 @@ export async function readInput(inputPath: string): Promise<string> {
 async function readStdin(): Promise<string> {
   return new Promise((resolve, reject) => {
     let data = '';
+    let resolved = false;
     process.stdin.setEncoding('utf-8');
+
+    const cleanup = () => {
+      clearTimeout(timer);
+      process.stdin.removeAllListeners('data');
+      process.stdin.removeAllListeners('end');
+      process.stdin.removeAllListeners('error');
+    };
+
+    const timer = setTimeout(() => {
+      if (!resolved && !data) {
+        resolved = true;
+        cleanup();
+        reject(new Error('Timeout reading from stdin'));
+      }
+    }, 30000);
 
     process.stdin.on('data', (chunk) => {
       data += chunk;
     });
 
     process.stdin.on('end', () => {
-      resolve(data);
+      if (!resolved) {
+        resolved = true;
+        cleanup();
+        resolve(data);
+      }
     });
 
     process.stdin.on('error', (err) => {
-      reject(err);
-    });
-
-    setTimeout(() => {
-      if (!data) {
-        reject(new Error('Timeout reading from stdin'));
+      if (!resolved) {
+        resolved = true;
+        cleanup();
+        reject(err);
       }
-    }, 30000);
+    });
   });
 }
 

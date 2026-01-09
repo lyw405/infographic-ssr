@@ -1,4 +1,4 @@
-import { optimize as svgoOptimize, Config as SvgoConfig } from 'svgo';
+import { optimize as svgoOptimize, type Config as SvgoConfig } from 'svgo';
 
 const defaultSvgoConfig: SvgoConfig = {
   multipass: true,
@@ -22,5 +22,3 @@ export function optimizeSVG(svg: string, config?: SvgoConfig): string {
   const result = svgoOptimize(svg, mergedConfig);
   return result.data;
 }
-
-export { type SvgoConfig };
