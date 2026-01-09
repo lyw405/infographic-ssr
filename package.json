@@ -1,11 +1,11 @@
 {
-  "name": "@antv/infographic-ssr",
+  "name": "infographic-ssr",
   "version": "0.2.0",
   "description": "Server-side rendering for @antv/infographic",
   "keywords": ["antv", "infographic", "ssr", "svg", "server-side-rendering"],
   "repository": "git@github.com:antvis/infographic-ssr.git",
   "license": "MIT",
-  "author": "AntV",
+  "author": "lyw405",
   "bin": {
     "infographic-ssr": "./lib/cli/index.js"
   },

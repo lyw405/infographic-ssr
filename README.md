@@ -1,19 +1,17 @@
-# @antv/infographic-ssr
+# infographic-ssr
 
 Server-side rendering for [@antv/infographic](https://github.com/antvis/Infographic).
 
 ## Installation
 
-```bash
-npm install @antv/infographic-ssr @antv/infographic
-```
+
 
 ## Usage
 
 ### Programmatic API
 
 ```typescript
-import { renderToSVGString } from '@antv/infographic-ssr';
+import { renderToSVGString } from 'infographic-ssr';
 import { writeFileSync } from 'fs';
 
 // Render from data array (uses default template)
@@ -50,7 +48,7 @@ writeFileSync('output.svg', svg3);
 ### Render from Syntax String
 
 ```typescript
-import { renderToSVGString } from '@antv/infographic-ssr';
+import { renderToSVGString } from 'infographic-ssr';
 
 const svg = await renderToSVGString(`
 template: list-grid-simple
